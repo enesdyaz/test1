@@ -120,13 +120,13 @@
                 return null
             }else{
 
-                let numberList = []
+                let numberList = 0
                 // for(var i=0;i<this.select3.length;i++){
                 //  numberList.push(Number(Object.values(this.Manufacturer[this.select1][this.select2][this.select3[i]])))
                 // }
 
                 for(var i=0; i<this.select3.length;i++){
-                numberList += Object.values(this.Manufacturer[this.select1][this.select2][this.select3[i]])
+                numberList += Number(this.Manufacturer[this.select1][this.select2][this.select3[i]])
                 
                 }
 
