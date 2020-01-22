@@ -1,5 +1,5 @@
 <template>
-
+<div>
   <v-card
     class="mx-auto"
     max-width="400"
@@ -13,6 +13,7 @@
 
     <v-card-text>
       <span class="subheading">Select your phone</span>
+
 
 
 <!-- SELECT 1 -->
@@ -35,73 +36,78 @@
       </div>
 
     </v-card-text>
-<v-divider></v-divider>  
-  {{select3}}: {{ValueData}}: {{numberList}}
+    <v-divider></v-divider>  
+  
     <v-card-actions>
       <span class="title"><small>PRICE: $</small>{{ValueData}}</span>
       <v-spacer></v-spacer><v-btn class='blue'> AGREE </v-btn>
     </v-card-actions>
   </v-card>
+  </div>
 </template>
 
 
 
 <script>
-  export default {
-    data: () => ({
+export default {
+  data (){
+    return{
       select1: '',
       select2: '',
       select3: '',
-            Manufacturer: {
-                apple: {
-                    iphone6: {
-                        battery: 59,
-                        screen: 69,
-                    },
-                    iphone7: {
-                        battery: 39,
-                        dock: 48,
-                    }
-                },
-                samsung: {
-                    galaxys8: {
-                        battery: 49,
-                        screen: 120,
-                    },
-                    galaxys10: {
-                        battery: 133,
-                        screen: 422,
-                    
-                    }
-                },
-                HTC: {
-                  htc10: {
-                    battery: 380,
-                    dockconnector: 280,
-                    screen: 450
-                  },
-                  htc11: {
-                    screen: 310,
-                    battery: 210,
-                    dock: 110,
-                    power: 240,
-                    sound: 110,
-                    home: 230,
-                    wifi: 110,
-                    gps: 100
-                  }
-                }
+      numberList: 0,
+      Manufacturer: {
+          apple: {
+              iphone6: {
+                  battery: 59,
+                  screen: 69,
+              },
+              iphone7: {
+                  battery: 39,
+                  dock: 48,
+              }
+          },
+          samsung: {
+              galaxys8: {
+                  battery: 49,
+                  screen: 120,
+              },
+              galaxys10: {
+                  battery: 133,
+                  screen: 422,
+              
+              }
+          },
+          HTC: {
+            htc10: {
+              battery: 380,
+              dockconnector: 280,
+              screen: 450
+            },
+            htc11: {
+              screen: 310,
+              battery: 210,
+              dock: 110,
+              power: 240,
+              sound: 110,
+              home: 230,
+              wifi: 110,
+              gps: 100
             }
+          }
+      }
+    
 
 
-
-    }),
+    }},
     computed: {
         ManufacturerData(){
-            return Object.keys(this.Manufacturer)
-        },
+   
+             return Object.keys(this.Manufacturer) 
+          }, 
+            
+      
         ModelData(){
-          console.log(this.select1)
             if(this.select1===''){
                 return null
             }else{
@@ -119,29 +125,22 @@
             if(this.select3===''){
                 return null
             }else{
-
-                let numberList = 0
-                // for(var i=0;i<this.select3.length;i++){
-                //  numberList.push(Number(Object.values(this.Manufacturer[this.select1][this.select2][this.select3[i]])))
-                // }
-
+                this.numberList=0
                 for(var i=0; i<this.select3.length;i++){
-                numberList += Number(this.Manufacturer[this.select1][this.select2][this.select3[i]])
-                
+                this.numberList += Number(this.Manufacturer[this.select1][this.select2][this.select3[i]])
                 }
 
-                console.log(typeof(numberList))
-                console.log(numberList)
-                return numberList
+                return this.numberList
               }
         },
         
     },
-    methods:{
-      add(a, e){
-        var total = a + e
-        return total
+    watch: {
+      select1(){
+        console.log(this.select1)
+        this.select2=''
+        this.select3=''
       }
     }
-  }
+}
 </script>
