@@ -3,7 +3,8 @@
   <v-card style='width: 300px;' raised>
     <v-card-title class="title font-weight-light"> Phone Model</v-card-title>
     <v-card-text>
-      <div> <v-select v-model="select1" :items='ManufacturerData'></v-select></div>
+       <div> <v-select v-model="select1" :items='ManufacturerData'></v-select></div>
+
       <div> <v-select v-model='select2' :items='ModelData'></v-select></div>
       <div> <v-select v-model='select3' :items='ProblemData'></v-select> </div>
     </v-card-text>
